@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script>
+         
+        $(function () {
+            $('#btnAdd').click(function () {
+                var myCalculator = new CalculatorModule("myDiv");
+                myCalculator.add($('#component1').val(), $('#component2').val());
+            });
+        });
+       
+         
+        var CalculatorModule = function (resultDiv) {
+
+            //private variables
+            var dest = document.getElementById(resultDiv) 
+
+             
+            return {
+                //expose public members
+                add: function (x, y) {
+                    var sum = x + " + " + y + " = " + (parseInt(x)+parseInt(y));
+                    dest.innerHTML = sum;
+                }
+            };
+        };
+    </script>
+</head>
+<body>
+
+    Calculator:<br />
+    1st component: <input type="number" id="component1" value="3" /><br />
+    2nd component: <input type="number" id="component2" value="2" />
+    <br /><button id="btnAdd" >Add!</button>
+    <br />
+    <br />
+    <div id="myDiv"></div>
+</body>
+</html>
